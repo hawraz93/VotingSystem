@@ -25,7 +25,12 @@ class Voting extends Component
            $REG_centers,
            $poll_centers,
            $voteNum,
+           $allVoteNum,
+           $removeVote,
            $candids;
+
+
+
 
 
            public function mount(){
@@ -75,6 +80,8 @@ class Voting extends Component
         'RE_id'       =>$this->selectReg,
         'polling_id'  =>$this->selectpolling,
         'candid_id'   =>$this->selectcandid,
+        'allVoteNum'   =>$this->allVoteNum,
+        'removeVote'   =>$this->removeVote,
 
      ]);
        session()->flash('message', ' Number of vote saved  ');

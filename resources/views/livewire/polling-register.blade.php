@@ -1,4 +1,9 @@
 <div>
+
+<div class="row form-row">
+    <div class="mt-3 mr-2 card col-md">
+        <h5 class="card-header">تۆمارکردنی بنکەکانی دەنگدان</h5>
+        <div class="card-body">
     <form wire:submit.prevent='polling_register'>
         <div class="mt-2">
             @if (session()->has('message'))
@@ -45,8 +50,27 @@
                 <span class="text-danger error">{{ $message }}</span>
                 @enderror
             </div>
-            <button class="btn btn-primary mt-2">تۆمارکردن</button>
+            <button class="mt-2 btn btn-primary">تۆمارکردن</button>
 
         </div>
     </form>
 </div>
+</div>
+
+
+    <div class="mt-3 mr-2 card col-md ">
+        @foreach ($pollingCenters as $item)
+        <div class="mt-1 row form-row col-12">
+
+                <div class="text-center col-4 text-primary ">
+                    {{ $item->Pol_name}}
+                </div>
+                <div class="text-center btn btn-danger btn-sm col-2"
+                    wire:click='deletePoll({{ $item->id }})'>سڕینەوە</div>
+
+        </div>
+        @endforeach
+
+    </div>
+    </div>
+    </div>

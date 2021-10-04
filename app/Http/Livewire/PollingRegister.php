@@ -57,9 +57,24 @@ class PollingRegister extends Component
 
 }
 
+public function deletePoll($id ){
+        // return dd($id);
+       polling_center::find($id)->delete();
+
+       session()->flash('message', 'ناوی بنکەکە بەسەرکەوتەیی سڕایەوە !');
+
+    }
+
 
     public function render()
     {
-        return view('livewire.polling-register');
+            $array= [
+
+            // 'acircles' => Circles::all(),
+            // 'candidates' => candidates::all(),
+            // 'registrationCeneters' => REG_center::all(),
+            'pollingCenters' => polling_center::all(),
+        ];
+        return view('livewire.polling-register',$array);
     }
 }

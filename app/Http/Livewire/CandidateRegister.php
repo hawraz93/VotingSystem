@@ -48,12 +48,24 @@ class CandidateRegister extends Component
     ]);
     session()->flash('message','candidates saved ');
 
+}
+public function deleteCandid($id)
+{
+    candidates::find($id)->delete();
+           session()->flash('message', 'ناوی کاندیدەکە بەسەرکەوتەیی سڕایەوە !');
 
 }
 
 
     public function render()
     {
-        return view('livewire.candidate-register');
+               $array= [
+
+            // 'acircles' => Circles::all(),
+            'candidates' => candidates::all(),
+            // 'registrationCeneters' => REG_center::all(),
+            // 'pollingCenters' => polling_center::all(),
+        ];
+        return view('livewire.candidate-register',$array);
     }
 }

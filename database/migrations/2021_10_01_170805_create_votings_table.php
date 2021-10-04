@@ -17,6 +17,9 @@ class CreateVotingsTable extends Migration
             $table->id();
 
             $table->string('voteNum');
+            $table->string('allVoteNum')->nullable();
+            $table->string('removeVote')->nullable();
+
             $table->unsignedBigInteger('pre_id');
             $table->foreign('pre_id')->references('id')->on('prefectures');
 

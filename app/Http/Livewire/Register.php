@@ -2,12 +2,13 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\candidates;
 use App\Models\Circles;
-use App\Models\polling_center;
+use Livewire\Component;
+use App\Models\candidates;
 use App\Models\Prefecture;
 use App\Models\REG_center;
-use Livewire\Component;
+use App\Models\polling_center;
+use Illuminate\Support\Facades\DB;
 
 class Register extends Component
 {
@@ -27,7 +28,28 @@ class Register extends Component
     public $circles;
 
 
+
    public $pre_id,$pre_selecte;
+
+    public function mount(){
+          $this->prefectures =Prefecture::all();
+
+          $this->circles = collect();
+          $this->REG_centers = collect();
+
+
+    }
+
+    public function updatedselectPrefecture($value){
+
+         $this->circles = Circles::where('pre_id',$value)->get();
+
+    }
+    public function updatedselectReg($value){
+
+         $this->REG_centers = REG_center::where('RE_id',$value)->get();
+
+    }
 
     public function Prefectuers_register(){
         $Prefectuers_validate = $this->validate([
@@ -58,58 +80,41 @@ class Register extends Component
 
     }
 
-    public function mount(){
-          $this->prefectures =Prefecture::all();
-          $this->circles = collect();
-          $this->REG_centers = collect();
+        public function deletePrefection($id ){
+        // return dd($id);
+        $cir= Circles::where('pre_id', '=', $id)->exists();
+        if ($cir) {
+              DB::table('Circles')->where('pre_id', $id)->delete();
+                Prefecture::find($id)->delete();
+                       session()->flash('message', 'پارێزگاکە بەسەرکەوتەیی سڕایەوە ');
+        } else {
+            Prefecture::find($id)->delete();
+                   session()->flash('message', 'پارێزگاکە بەسەرکەوتەیی سڕایەوە ');
+        }
 
-
-    }
-
-    public function updatedselectPrefecture($value){
-
-         $this->circles = Circles::where('pre_id',$value)->get();
-
-    }
-    public function updatedselectReg($value){
-
-         $this->REG_centers = REG_center::where('RE_id',$value)->get();
+    //    Prefecture::find($id)->delete();
+    //    session()->flash('message', 'Post successfully deleted !');
 
     }
+        public function deleteCircle($id ){
+        // return dd($id);
+       Circles::find($id)->delete();
 
+       session()->flash('message', 'بازنەکە بەسەرکەوتەیی سڕایەوە ');
 
-    public function polling_register(){
-        $Prefectuers_validate = $this->validate([
-            'Pol_name' => 'required|unique:polling_centers',
-        ]);
-        polling_center::create([
-           'Pol_name'  =>$this->Pol_name,
-        ]);
-        session()->flash('message','polling center saved ');
-
-
-    }
-    public function candidate_register(){
-        $Prefectuers_validate = $this->validate([
-            'Can_name' => 'required|unique:candidates',
-        ]);
-        candidates::create([
-           'Can_name'  =>$this->Can_name,
-        ]);
-        session()->flash('message','candidates saved ');
     }
 
     public function render()
     {
-        // $array= [
-        //     'prefectures' => Prefecture::all(),
-        //     'circles' => Circles::all(),
-        //     'candidates' => candidates::all(),
-        //     'registrationCeneters' => REG_center::all(),
-        //     'pollingCenters' => polling_center::all(),
-        // ];
+        $array= [
+
+            'acircles' => Circles::all(),
+            // 'candidates' => candidates::all(),
+            // 'registrationCeneters' => REG_center::all(),
+            // 'pollingCenters' => polling_center::all(),
+        ];
 
 
-        return view('livewire.register');
+        return view('livewire.register',$array);
     }
 }

@@ -18,7 +18,7 @@
                                     @endforeach
                                 </div>
                                 <div class="col-auto">
-                                    <i class="text-gray-300 fas fa-calendar fa-2x"></i>
+                                    <i class="text-primary fas fa-users fa-2x"></i>
                                 </div>
                             </div>
                         </div>
@@ -41,7 +41,8 @@
                                     @endforeach
                                 </div>
                                 <div class="col-auto">
-                                    <i class="text-gray-300 fas fa-dollar-sign fa-2x"></i>
+
+                                    <i class="text-success fas fa-user-crown fa-2x"></i>
                                 </div>
                             </div>
                         </div>
@@ -56,6 +57,7 @@
                                 <div class="mr-2 col">
                                     <div class="mb-1 text-xs font-weight-bold text-info text-uppercase">کۆی ژمارەی دەنگەکان
                                     </div>
+
                                     <div class="row no-gutters align-items-center" wire:poll='summ'>
                                         <div class="col-auto">
                                             <div class="mb-0 mr-3 text-gray-800 h5 font-weight-bold" > {{number_format($persentage, 2, '.', ',')  }}%</div>
@@ -69,7 +71,7 @@
                                     </div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="text-gray-300 fas fa-clipboard-list fa-2x"></i>
+                                    <i class="text-info fas fa-vote-yea fa-2x"></i>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +93,8 @@
 
                                 </div>
                                 <div class="col-auto">
-                                    <i class="text-gray-300 fas fa-comments fa-2x"></i>
+
+                                    <i class="text-warning fas fa-chair fa-2x"></i>
                                 </div>
                             </div>
                         </div>

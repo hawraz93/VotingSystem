@@ -53,8 +53,21 @@ class RegistrationCenter extends Component
 
 
   }
+       public function deleteReg($id ){
+        // return dd($id);
+       REG_center::find($id)->delete();
+       session()->flash('message', ' گەڕەکەکە بەسەرکەوەتویی سڕایەوە !');
+
+    }
     public function render()
     {
-        return view('livewire.registration-center');
+          $array= [
+
+            // 'acircles' => Circles::all(),
+            // 'candidates' => candidates::all(),
+            'registrationCeneters' => REG_center::all(),
+            // 'pollingCenters' => polling_center::all(),
+        ];
+        return view('livewire.registration-center',$array);
     }
 }
