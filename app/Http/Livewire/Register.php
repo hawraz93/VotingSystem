@@ -11,6 +11,7 @@ use Livewire\Component;
 
 class Register extends Component
 {
+    public $voter_num,$candids_num,$seats_num;
     public $Pre_name,
            $Cir_name,
            $Reg_name,
@@ -39,6 +40,7 @@ class Register extends Component
 
 
     }
+
     public function circle_register(){
         $Prefectuers_validate = $this->validate([
             'Cir_name' => 'required',
@@ -47,6 +49,9 @@ class Register extends Component
         Circles::create([
            'Cir_name'  =>$this->Cir_name,
            'pre_id'    =>$this->pre_selecte,
+           'voter_num'    =>$this->voter_num,
+           'candids_num'    =>$this->candids_num,
+           'seats_num'    =>$this->seats_num,
         ]);
         session()->flash('message','Circle  saved ');
 

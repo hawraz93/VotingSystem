@@ -16,7 +16,7 @@ class CreateVotingsTable extends Migration
         Schema::create('votings', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('voteNum');
+            $table->string('voteNum');
             $table->unsignedBigInteger('pre_id');
             $table->foreign('pre_id')->references('id')->on('prefectures');
 

@@ -24,6 +24,7 @@ class Voting extends Component
            $circles,
            $REG_centers,
            $poll_centers,
+           $voteNum,
            $candids;
 
 
@@ -52,29 +53,31 @@ class Voting extends Component
 
    }
 
-// public function polling_register(){
-//  $Prefectuers_validate = $this->validate([
-//      'Pol_name' => 'required|unique:polling_centers',
-//  ]);
 
-     public function candidate_register(){
-       $Prefectuers_validate = $this->validate([
-         'Can_name' => 'required|unique:candidates',
-         'number' => 'required|unique:candidates',
-         'pre_id' => 'required',
-         'circle_id' => 'required',
+
+     public function voteRegister(){
+       $voteRegister_validate = $this->validate([
+         'selectcandid'  => 'required',
+         'selectReg'    => 'required',
+         'selectPrefecture'    => 'required',
+         'selectCircle' => 'required',
+         'selectpolling' => 'required',
+         'voteNum' => 'required',
 
      ]);
-    //  pre_id	RE_id	circle_id	polling_id	candid_id
+    //  pre_id  RE_id  circle_id  polling_id  candid_id
+      //   voteNum  pre_id  RE_id  circle_id  polling_id  candid_id
        ModelsVoting::create([
-         'pre_id'  =>$this->selectPrefecture,
-         'circle_id'  =>$this->selectCircle,
-        'RE_id'  =>$this->selectReg,
+
+        'voteNum'      =>$this->voteNum,
+        'pre_id'      =>$this->selectPrefecture,
+        'circle_id'   =>$this->selectCircle,
+        'RE_id'       =>$this->selectReg,
         'polling_id'  =>$this->selectpolling,
-        'candid_id'  =>$this->selectcandid,
+        'candid_id'   =>$this->selectcandid,
 
      ]);
-       session()->flash('message', 'candidates saved ');
+       session()->flash('message', ' Number of vote saved  ');
    }
     public function render()
     {

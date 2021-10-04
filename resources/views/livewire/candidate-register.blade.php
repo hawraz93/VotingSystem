@@ -9,25 +9,25 @@
             @endif
         </div>
         <div class="col-md-6">
-            <label for="prefectures">Prefectuers</label>
+            <label for="prefectures">پارێزگا</label>
             <select wire:model='selectPrefecture' type="text" class="form-control" id="prefectures">
-                <option selected value="">Select Prefectuers</option>
+                <option selected value="">هەڵبژاردنی پارێزگا</option>
                 @foreach ($prefectuers_1 as $pre)
                 <option value="{{ $pre->id }}"> {{ $pre->Pre_name }}</option>
                 @endforeach
             </select>
 
 
-            <label for="circle">Circle</label>
+            <label for="circle">بازنە</label>
             <select wire:model='selectCircle' type="text" class="form-control" id="circle">
 
-                <option selected value="">Select Circle</option>
+                <option selected value="">هەڵبژاردنی بەزنە</option>
                 @foreach ($circles_1 as $name)
                 <option value="{{ $name->id }}"> {{ $name->Cir_name }}</option>
                 @endforeach
             </select>
 
-            <label for="">Candidate  name </label>
+            <label for="">تکایە ناوی کاند بنوسە  </label>
             <input wire:model='Can_name' type="text" class="form-control"  name="Can_name" old="Can_name" >
             <div>
                 @error('Can_name')
@@ -35,14 +35,14 @@
                 @enderror
             </div>
 
-            <label for="">Candidate  Number </label>
+            <label for="">ژمارەی کاندید </label>
             <input wire:model='number' type="text" class="form-control"  name="number" old="number" >
             <div>
                 @error('number')
                 <span class="text-danger error">{{ $message }}</span>
                 @enderror
             </div>
-            <button class="btn btn-primary mt-2">Submit</button>
+            <button class="btn btn-primary mt-2">تۆمارکردن</button>
 
         </div>
     </form>
