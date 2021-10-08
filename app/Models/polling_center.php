@@ -15,9 +15,19 @@ class polling_center extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function Pcircles(): HasOne
+
+    public function pollpre(): HasOne
     {
-        return $this->hasOne(circles::class, 'circle_id', 'id');
+        return $this->hasOne(Prefecture::class, 'id', 'pre_id');
     }
+    public function pollcir(): HasOne
+    {
+        return $this->hasOne(circles::class, 'id', 'circle_id');
+    }
+    public function pollReg(): HasOne
+    {
+        return $this->hasOne(REG_center::class, 'id', 'RE_id');
+    }
+
     use HasFactory;
 }

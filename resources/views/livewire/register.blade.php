@@ -9,7 +9,7 @@
     </div>
     <div class="mt-3 mr-2 card col-md">
 
-        <h5 class="card-header">تۆمارکردنی پارێزگاکان </h5>
+        <h5 class="card-header text-primary">تۆمارکردنی پارێزگاکان </h5>
         <div class="card-body">
             <form wire:submit.prevent='Prefectuers_register'>
                 <div class="col-md">
@@ -27,17 +27,28 @@
     </div>
 
     <div class="mt-3 mr-2 card col-md ">
-        @foreach ($prefectures as $item)
-        <div class="mt-1 row form-row col-12">
-
-                <div class="text-center col-4 text-primary ">
-                    {{ $item->Pre_name}}
-                </div>
-                <div class="text-center btn btn-danger btn-sm col-2"
+        
+        <h5 class="card-header text-primary"> پارێزگاکان </h5>
+        <div class="card-body">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">پارێزگا </th>
+                <th scope="col">کردار </th>
+            </tr>
+        </thead>
+            @foreach ($prefectures as $item)
+            <tr>    
+                <th scope="row">#</th>
+                <th >{{ $item->Pre_name}}</th>
+                <th > <div class="text-center btn btn-danger btn-sm "
                     wire:click='deletePrefection({{ $item->id }})'>سڕینەوە</div>
+                </th>
+            </tr> 
+            @endforeach
+        </table>
 
-        </div>
-        @endforeach
 
     </div>
     </div>
@@ -62,3 +73,4 @@
 
 
 
+</div>

@@ -65,7 +65,7 @@ class RegistrationCenter extends Component
 
             // 'acircles' => Circles::all(),
             // 'candidates' => candidates::all(),
-            'registrationCeneters' => REG_center::all(),
+            'registrationCeneters' => REG_center::with('registPre')->with('registCir')->get(),
             // 'pollingCenters' => polling_center::all(),
         ];
         return view('livewire.registration-center',$array);

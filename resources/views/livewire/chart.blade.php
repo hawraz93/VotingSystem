@@ -1,4 +1,8 @@
-<div>
+<div class="mt-3">
+  <div class="card shadow">
+    <h5 class="card-header text-primary">دەنگەکان </h3>
+      <div class="card-body">
+
     <table class="table">
   <thead>
     <tr>
@@ -30,5 +34,6 @@
  @endforeach
   </tbody>
 </table>
-
+  </div>
+</div>
 </div>

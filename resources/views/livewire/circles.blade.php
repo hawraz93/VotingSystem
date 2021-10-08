@@ -1,7 +1,7 @@
 <div>
   <div class="row form-row">
     <div class="mt-3 mr-2 card col-md ">
-        <h5 class="card-header"> تۆمارکردنی بازنەکان</h5>
+        <h5 class="card-header text-primary"> تۆمارکردنی بازنەکان</h5>
         <div class="card-body">
             <form wire:submit.prevent='circle_register'>
                     <div class="mt-2">
@@ -59,14 +59,15 @@
         </div>
     </div>
         <div class="mt-3 mr-2 card col-md ">
-            <div class="card-header">
-            <h3 class="text-priemry">بازنەکان</h3></div>
-
-
+           
+            <h5 class="card-header text-primary">بازنەکان</h3>
+<div class="card-body">
+    
 <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
+      <th scope="col">پارێزگا </th>
       <th scope="col">بازنەکان</th>
       <th scope="col">ژم.دەنگدەر</th>
       <th scope="col">ژم.کاندید</th>
@@ -75,21 +76,24 @@
     </tr>
   </thead>
   <tbody>
-   @foreach ($acircles as $item)
+   @foreach ($circles as $item)
     <tr>
       <th scope="row">#</th>
+      <td>{{ $item->circles_pre->Pre_name}}</td>
       <td>{{ $item->Cir_name}}</td>
       <td>{{ $item->voter_num}}</td>
       <td>{{ $item->candids_num}}</td>
       <td>{{ $item->seats_num}}</td>
       <td><div class="text-center btn btn-danger btn-sm "
-                    wire:click='deleteCircle({{ $item->id }})'>سڕینەوە</div>
-                </td>
+         wire:click='deleteCircle({{ $item->id }})'>سڕینەوە</div>
+         </td>
     </tr>
  @endforeach
   </tbody>
 </table>
 
+
+</div>
 
 
     </div>

@@ -1,6 +1,6 @@
 <div class='row form-row'>
       <div class="mt-3 card col-md ">
-        <h5 class="card-header">تۆمارکردنی گەڕەکەکان </h5>
+        <h5 class="card-header text-primary">تۆمارکردنی گەڕەکەکان </h5>
         <div class="card-body">
     <form wire:submit.prevent='reg_register'>
         <div class="mt-2">
@@ -47,17 +47,33 @@
 
 
     <div class="mt-3 mr-2 card col-md ">
+        <h5 class="card-header text-primary" > گەڕەکەکان </h5>
+        <div class="card-body">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">پارێزگا </th>
+                <th scope="col">بازنە  </th>
+                <th scope="col">گەڕەك </th>
+                <th scope="col"> </th>
+                <th scope="col">کردار </th>
+            </tr>
+        </thead>
         @foreach ($registrationCeneters as $item)
-        <div class="mt-1 row form-row col-12">
-
-                <div class="text-center col-4 text-primary ">
-                    {{ $item->Reg_name}}
-                </div>
-                <div class="text-center btn btn-danger btn-sm col-2"
-                    wire:click='deleteReg({{ $item->id }})'>سڕینەوە</div>
-
-        </div>
+        <tr>
+            <th scope="row">#</th>
+            <th> {{ $item->registPre->Pre_name }}</th>
+            <th>{{ $item->registCir->Cir_name }}</th>
+            <th>{{ $item->Reg_name }}</th>
+            <th></th>
+            <th><div class="text-center btn btn-danger btn-sm"
+                wire:click='deletePoll({{ $item->id }})'>سڕینەوە</div></th>
+        </tr>
         @endforeach
+        </table>
+
 
     </div>
     </div>
+</div>

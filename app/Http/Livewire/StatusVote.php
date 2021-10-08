@@ -17,7 +17,7 @@ class StatusVote extends Component
 
 
     public $numberOfVote;
-    public $numberOfVoter;
+    public $numberOfVoter=1;
     public $numberOfVotes;
     public $prefectures,
            $circles,
@@ -55,6 +55,7 @@ class StatusVote extends Component
 
            if (!$this->selectcandid==NULL) {
             $this->numberOfVotes = voting::where('candid_id',$this->selectcandid)->sum('voteNum');
+
             $this->persentage= $this->numberOfVotes/$this->numberOfVoter *100;
           
            } else {

@@ -62,7 +62,7 @@ public function deleteCandid($id)
                $array= [
 
             // 'acircles' => Circles::all(),
-            'candidates' => candidates::all(),
+            'candidates' => candidates::with('candidCir')->with('candidPre')->get(),
             // 'registrationCeneters' => REG_center::all(),
             // 'pollingCenters' => polling_center::all(),
         ];

@@ -73,7 +73,7 @@ public function deletePoll($id ){
             // 'acircles' => Circles::all(),
             // 'candidates' => candidates::all(),
             // 'registrationCeneters' => REG_center::all(),
-            'pollingCenters' => polling_center::all(),
+            'pollingCenters' => polling_center::with('pollcir')->with('pollpre')->with('pollReg')->get(),
         ];
         return view('livewire.polling-register',$array);
     }

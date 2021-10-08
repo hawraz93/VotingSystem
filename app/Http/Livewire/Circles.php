@@ -67,7 +67,7 @@ public $selectPrefecture;
     {
             $array= [
 
-            'acircles' => ModelsCircles::all(),
+            'circles' => ModelsCircles::with('circles_pre')->get(),
             // 'candidates' => candidates::all(),
             // 'registrationCeneters' => REG_center::all(),
             // 'pollingCenters' => polling_center::all(),
